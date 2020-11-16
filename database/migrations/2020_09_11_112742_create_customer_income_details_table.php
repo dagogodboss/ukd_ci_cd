@@ -16,15 +16,15 @@ class CreateCustomerIncomeDetailsTable extends Migration
         Schema::create('customer_income_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
-            $table->float('income', 11, 2)->default(0.00);
-            $table->enum('employment_status', ['employed','self-employed','student','retired'])->nullable();
-            
+            $table->string('bvn');
+            $table->string('employment_status')->nullable();
             $table->text('business_name')->nullable();
             $table->string('business_state')->nullable();
             $table->string('business_city')->nullable();
             $table->string('business_lga')->nullable();
 
             $table->string('business_address')->nullable();
+            $table->string('business_phone_number')->nullable();
             $table->string('rc_bn')->nullable();
             $table->string('beneficiary_bank')->nullable();
             $table->string('account_name')->nullable();
@@ -53,6 +53,7 @@ class CreateCustomerIncomeDetailsTable extends Migration
             $table->string('pension_bank')->nullable();
 
 
+            $table->string('student_name')->nullable();
             $table->string('school_name')->nullable();
             $table->string('school_address')->nullable();
             $table->string('current_level')->nullable();
@@ -60,10 +61,17 @@ class CreateCustomerIncomeDetailsTable extends Migration
             $table->string('parent_full_name')->nullable();
             $table->string('parent_address')->nullable();
 
+            $table->string('iips')->nullable();
+            $table->string('parents_phone_number')->nullable();
+            $table->string('parent_bank_name')->nullable();
+            $table->string('parent_account_number')->nullable();
+            $table->string('parent_account_name')->nullable();
+            
             $table->string('id_card')->nullable();
             $table->string('bank_statement')->nullable();
             $table->string('utility_bill')->nullable();
             $table->string('other_files')->nullable();
+            $table->string('cheque')->nullable();
             
 
             $table->integer('created_by');

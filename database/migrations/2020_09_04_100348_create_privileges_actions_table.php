@@ -15,6 +15,7 @@ class CreatePrivilegesActionsTable extends Migration
     {
         Schema::create('privileges_actions', function (Blueprint $table) {
             $table->id();
+            $table->integer('permission_id');
             $table->string('name');
             $table->timestamps();
         });

@@ -16,25 +16,24 @@ class CreateLoansTable extends Migration
         Schema::create('loans', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->nullable();
-            $table->boolean('customer_request')->nullable()->default(false);
             $table->integer('loan_officer_id')->nullable();
             $table->unsignedBigInteger('customer_id');
-            $table->integer('product_id')->nullable();
-            $table->integer('branch_id')->nullable();
+            $table->integer('product_id');
+            $table->integer('branch_id');
             $table->date('release_date')->nullable();
             $table->date('maturity_date')->nullable();
-            $table->unsignedBigInteger('customer_verification_id');
+            $table->unsignedBigInteger('customer_verification_id')->nullable();
             $table->date('interest_start_date')->nullable();
             $table->date('first_payment_date')->nullable();
             $table->integer('loan_disbursed_by_id')->nullable();
             $table->double('principal');
             $table->double('disbursed_amount')->nullable();
             $table->enum('interest_method', [
-                'flat_rate',
                'installments',
                 'interest_only',
-                'compound_interest',
-            ])->default('flat_rate');
+                'flat_rate',
+                'compound_interest'
+            ])->default('flat_rate')->nullable();
             $table->double('interest_rate')->nullable();
             $table->enum('repayment_method', array(
                 'daily',
@@ -52,11 +51,14 @@ class CreateLoansTable extends Migration
                 'fully_paid',
                 'defaulted',
                 'restructured',
-                'processing'
+                'processing',
+                'approve',
+                'active'
             ))->default('open');
+
             $table->string('repayment_instrument')->nullable();
             $table->string('loan_duration')->nullable();
-            $table->string('loan_duration_lenght')->nullable();
+            $table->string('loan_duration_length')->nullable();
             $table->text('loan_purpose')->nullable();
 
             $table->string('confirmation_status')->nullable();
@@ -74,12 +76,6 @@ class CreateLoansTable extends Migration
             $table->foreign('customer_id')
             ->references('id')
             ->on('customers')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-
-            $table->foreign('customer_verification_id')
-            ->references('id')
-            ->on('customer_verifications')
             ->onUpdate('cascade')
             ->onDelete('cascade');
         });

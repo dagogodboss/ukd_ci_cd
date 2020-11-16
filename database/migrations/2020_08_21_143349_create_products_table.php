@@ -17,8 +17,8 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->nullable();
             $table->string('name')->nullable();
-            $table->float('minimum_principal')->nullable();
-            $table->float('maximum_principal')->nullable();
+            $table->float('minimum_principal', 11, 4)->nullable();
+            $table->float('maximum_principal', 11, 4)->nullable();
             $table->enum('interest_method', array(
                 'flat_rate',
                 'installments',
