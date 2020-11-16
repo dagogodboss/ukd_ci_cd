@@ -19,7 +19,7 @@ class CreateEmployeesTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('other_name')->nullable();
             $table->string('username')->unique()->nullable();
-            $table->string('email', 191)->unique()->nullable();
+            $table->string('email', 293)->unique()->nullable();
             $table->string('gender')->nullable();
             $table->string('password')->nullable();
             $table->string('phone_number')->unique()->nullable();
@@ -29,6 +29,7 @@ class CreateEmployeesTable extends Migration
             $table->unsignedBigInteger('department_id')->nullable();
             $table->unsignedBigInteger('branch_id')->nullable();
             $table->unsignedBigInteger('designation_id')->nullable();
+            $table->unsignedBigInteger('role_id')->nullable();
             $table->string('employment_type')->nullable();
             $table->timestamp('joined_on')->nullable();
             $table->timestamp('leaving_date')->nullable();

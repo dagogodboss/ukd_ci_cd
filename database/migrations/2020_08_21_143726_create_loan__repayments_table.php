@@ -16,12 +16,14 @@ class CreateLoanRepaymentsTable extends Migration
         Schema::create('loan_repayments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('loan_id')->unsigned();
-            $table->date('customer_id')->nullable();
             $table->integer('user_id')->unsigned();
-            $table->integer('pay_date');
+            $table->string('transaction_type')->nullable();
+            $table->integer('payment_bank')->nullable();
             $table->double('amount');
-            $table->date('date_paid')->nullable();
+            $table->string('date_paid')->nullable();
             $table->text('notes')->nullable();
+            $table->string('complete_payment_status')->nullable();
+            $table->string('confirmation_status')->nullable();
             $table->timestamps();
         });
     }
