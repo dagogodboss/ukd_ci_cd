@@ -18,7 +18,7 @@ class CreateSignsTable extends Migration
             $table->string('name', 100);
             $table->string('sign', 255);
             $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->default('0000-00-00 00:00:00');
+            $table->timestamp('updated_at');
         });
     }
 
